@@ -1,0 +1,83 @@
+<div class="card mt-3">
+  <div class="card-header">
+    Edit Song
+  </div>
+  <div class="card-body">
+    <form class=" mt-3" [formGroup]="editForm" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <label><strong>Name</strong></label>
+          <input type="text" class="form-control" formControlName="name" required>
+          <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+            <div *ngIf="name.errors.required">
+              Bạn chưa nhập tên bài hát!
+            </div>
+            <div *ngIf="name.errors.minlength">
+              Tên bài hát tối thiểu là 2 ký tự!
+            </div>
+            <div *ngIf="name.errors.maxlength">
+              Tên bài hát quá dài!
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label><strong>Singer</strong></label>
+          <input type="text" class="form-control" formControlName="singer" required>
+          <div *ngIf="singer.invalid && (singer.dirty || singer.touched)" class="alert alert-danger">
+            <div *ngIf="singer.errors.required">
+              Bạn chưa nhập tên ca sỹ!
+            </div>
+            <div *ngIf="singer.errors.minlength">
+              Tên ca sỹ tối thiểu là 2 ký tự!
+            </div>
+            <div *ngIf="singer.errors.maxlength">
+              Tên ca sỹ quá dài!
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <label><strong>Lyric</strong></label>
+          <textarea class="form-control" formControlName="lyric" required></textarea>
+          <div *ngIf="lyric.invalid && (lyric.dirty || lyric.touched)" class="alert alert-danger">
+            <div *ngIf="lyric.errors.required">
+              Bạn chưa nhập lời bài hát!
+            </div>
+            <div *ngIf="lyric.errors.minlength">
+              Lời bài hát tối thiểu là 2 ký tự!
+            </div>
+            <div *ngIf="lyric.errors.maxlength">category
+              Lời bài hát quá dài!
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label><strong>Category</strong></label>
+          <select class="custom-select" formControlName="category" required>
+            <option>Thể loại</option>
+            <option>Nhạc trẻ</option>
+            <option>Nhạc trữ tình</option>
+            <option>Nhạc quê hương</option>
+          </select>
+          <div *ngIf="category.invalid && (category.dirty || category.touched)" class="alert alert-danger">
+            <div *ngIf="category.errors.required">
+              Bạn chưa nhập thể loại bài hát!
+            </div>
+            <div *ngIf="category.errors.minlength">
+              Thể l bài hát tối thiểu là 2 ký tự!
+            </div>
+            <div *ngIf="category.errors.maxlength">
+              Tên bài hát quá dài!
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary" type="submit">Submit</button>
+      <button class="btn btn-secondary ml-2" [routerLink]="['']">Cancel</button>
+    </form>
+  </div>
+</div>
+
+
+

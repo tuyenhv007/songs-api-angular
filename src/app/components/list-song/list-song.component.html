@@ -1,0 +1,50 @@
+<div class="card mt-3">
+  <div class="card-header">
+    <div class="row">
+      <div class="col-md-4">
+        Song List
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-6">
+
+      </div>
+      <div class="col-md-6">
+        <input type="text" (keyup)="searchKeyword($event)" style="width: 400px">
+      </div>
+    </div>
+
+    <button class="btn btn-success mt-2" [routerLink]="['song/add']">Create</button>
+    <table class="table">
+      <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Singer</th>
+        <th scope="col">Lyric</th>
+        <th scope="col">Category</th>
+        <th scope="col">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let song of listSongFind; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ song.name }}</td>
+        <td>{{ song.singer }}</td>
+        <td>{{ song.lyric }}</td>
+        <td>{{ song.category }}</td>
+        <td>
+          <a [routerLink]="['song/edit', song.id]" >
+            <i class="fa fa-edit" style="color: blue"></i>
+          </a>
+          <a [routerLink]="" (click)="deleteSong(i)">
+            <i class="fa fa-trash ml-3" style="color: red;"></i>
+          </a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
